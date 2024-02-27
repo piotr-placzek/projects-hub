@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
+import { ReactNode } from 'react';
 import Header from './components/client/Header';
 import Sidebar from './components/client/Sidebar';
-import SidebarContext from './contexts/SidebarContext';
+import { SidebarContextProvider } from './contexts/SidebarContext';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,19 +20,23 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>
-                <div className="flex h-screen bg-gray-200">
-                    <SidebarContext>
-                        <Sidebar />
-                    </SidebarContext>
-                    <div className="flex flex-col flex-1 overflow-hidden">
-                        <SidebarContext>
-                            <Header />
-                        </SidebarContext>
-                        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">{children}</main>
-                    </div>
-                </div>
-            </body>
+            <SidebarContextProvider>
+                <Content>{children}</Content>
+            </SidebarContextProvider>
         </html>
+    );
+}
+
+function Content({ children }: { children: ReactNode }) {
+    return (
+        <body className={inter.className}>
+            <div className="flex h-screen bg-gray-200">
+                <Sidebar />
+                <div className="flex flex-col flex-1 overflow-hidden">
+                    <Header />
+                    <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">{children}</main>
+                </div>
+            </div>
+        </body>
     );
 }

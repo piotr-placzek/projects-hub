@@ -1,10 +1,11 @@
 'use client';
 
-import { useSidebarContext } from '@/app/contexts/SidebarContext';
+import SidebarContext from '@/app/contexts/SidebarContext';
 import clsx from 'clsx';
+import { useContext } from 'react';
 
 export default function Sidebar() {
-    const { sidebarOpen, setSidebarOpen } = useSidebarContext();
+    const { sidebarOpen, setSidebarOpen } = useContext(SidebarContext);
     return (
         <>
             <div

@@ -1,9 +1,10 @@
 'use client';
 
-import { useSidebarContext } from '@/app/contexts/SidebarContext';
+import SidebarContext from '@/app/contexts/SidebarContext';
+import { useContext } from 'react';
 
 export default function Header() {
-    const { sidebarOpen, setSidebarOpen } = useSidebarContext();
+    const { sidebarOpen, setSidebarOpen } = useContext(SidebarContext);
 
     return (
         <header className="flex items-center justify-between px-6 py-4 bg-white border-b-4 border-indigo-600">

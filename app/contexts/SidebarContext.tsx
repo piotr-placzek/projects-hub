@@ -1,21 +1,17 @@
 'use client';
-import React, { ReactNode, useContext, useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 
 type SidebarContextType = {
     sidebarOpen: boolean;
     setSidebarOpen: (v: boolean) => void;
 };
 
-const SidebarContextData = React.createContext<SidebarContextType>({
+export const SidebarContext = React.createContext<SidebarContextType>({
     sidebarOpen: false,
     setSidebarOpen: (v: boolean) => {},
 });
 
-export function useSidebarContext() {
-    return useContext(SidebarContextData);
-}
-
-export default function SidebarContext({ children }: { children: ReactNode }) {
+export function SidebarContextProvider({ children }: { children: ReactNode }) {
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
     const value: SidebarContextType = {
         sidebarOpen,
@@ -24,5 +20,7 @@ export default function SidebarContext({ children }: { children: ReactNode }) {
             setSidebarOpen(v);
         },
     };
-    return <SidebarContextData.Provider value={value}>{children}</SidebarContextData.Provider>;
+    return <SidebarContext.Provider value={value}>{children}</SidebarContext.Provider>;
 }
+
+export default SidebarContext;
