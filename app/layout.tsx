@@ -5,12 +5,12 @@ import { Inter } from 'next/font/google';
 import { ReactNode } from 'react';
 import Header from './components/client/Header';
 import Sidebar from './components/client/Sidebar';
+import AppTitleBanner from './components/server/AppTitleBanner';
 import Navigation from './components/server/navigation/Navigation';
 import appConfig from './configs/app.config';
+import navigationConfig from './configs/navigation.config';
 import { SidebarContextProvider } from './contexts/SidebarContext';
 import './globals.css';
-import navigationConfig from './configs/navigation.config';
-import AppTitleBanner from './components/server/AppTitleBanner';
 
 faConfig.autoAddCss = false;
 const inter = Inter({ subsets: ['latin'] });
@@ -26,7 +26,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang='en'>
+        <html lang="en">
             <SidebarContextProvider>
                 <Content>{children}</Content>
             </SidebarContextProvider>
@@ -37,9 +37,9 @@ export default function RootLayout({
 function Content({ children }: { children: ReactNode }) {
     return (
         <body className={inter.className}>
-            <div className='flex h-screen bg-gray-200'>
+            <div className="flex h-screen bg-gray-200">
                 <Sidebar>
-                    <AppTitleBanner className='mt-4 mb-4' />
+                    <AppTitleBanner className="mt-4 mb-4" />
                     <Navigation
                         className={{
                             nav: '',
@@ -49,9 +49,9 @@ function Content({ children }: { children: ReactNode }) {
                         items={navigationConfig}
                     />
                 </Sidebar>
-                <div className='flex flex-col flex-1 overflow-hidden'>
+                <div className="flex flex-col flex-1 overflow-hidden">
                     <Header />
-                    <main className='flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 p-2'>{children}</main>
+                    <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 p-2">{children}</main>
                 </div>
             </div>
         </body>

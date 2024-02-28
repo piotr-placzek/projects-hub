@@ -1,6 +1,4 @@
-import clsx from 'clsx';
 import NavigationItem, { NavigationItemProps } from './NavigationItem';
-
 
 export type NavigationProps = {
     items: NavigationItemProps[];
