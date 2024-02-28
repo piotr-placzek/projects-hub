@@ -1,5 +1,5 @@
 import { faFolderTree, faKeyboard } from '@fortawesome/free-solid-svg-icons';
-import { NavigationItemProps } from '../components/server/navigation/NavigationItem';
+import { NavigationItemProps } from '../components/navigation/NavigationItem';
 
 const navigationConfig: Required<NavigationItemProps>[] = [
     {
