@@ -16,7 +16,6 @@ export function SidebarContextProvider({ children }: { children: ReactNode }) {
     const value: SidebarContextType = {
         sidebarOpen,
         setSidebarOpen: (v: boolean) => {
-            console.info('ci', 'setSidebarOpen', v, sidebarOpen);
             setSidebarOpen(v);
         },
     };
