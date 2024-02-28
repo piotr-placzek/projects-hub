@@ -1,5 +1,6 @@
 'use client';
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
+import { ReactComponentProps } from '../react-component-properties.type';
 
 type SidebarContextType = {
     sidebarOpen: boolean;
@@ -11,7 +12,7 @@ export const SidebarContext = React.createContext<SidebarContextType>({
     setSidebarOpen: (v: boolean) => {},
 });
 
-export function SidebarContextProvider({ children }: { children: ReactNode }) {
+export function SidebarContextProvider({ children }: ReactComponentProps) {
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
     const value: SidebarContextType = {
         sidebarOpen,
