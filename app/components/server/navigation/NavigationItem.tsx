@@ -29,7 +29,7 @@ function NavigationItem({
     return (
         <Link href={href} className={`${className} ${isActive() ? activeClassName : ''}`}>
             <FontAwesomeIcon icon={faIcon}></FontAwesomeIcon>
-            <span className="mx-3">{text}</span>
+            <span className='mx-3'>{text}</span>
         </Link>
     );
 }
